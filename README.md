@@ -1,11 +1,11 @@
-### proxy_pool
-Proxy IP pool for Python3
+### proxy_pool(自用)
+Proxy IP pool for Python3 
 
 Github上其实已经有很多IP代理池了，但为何还要多造这个轮子呢？
 1. 爬取的网站资源比较少，需要自己写扩展才能获取更多的资源；
 2. 很多都是通用性代理IP，需要自己二次校验；
 3. 满足自己个性化需求，想怎么扩展就怎么扩展；
-4. 总的来说就是Github上面的都太烂、不好用，用着很是不爽，看我来造个更烂更难用的！
+4. 总的来说就是Github上面的都不好用，用着很是不爽，看我来造个差劲更难用的！
 
 当前爬取的网站主要如下：
 1. 云代理 www.ip3366.net
@@ -25,3 +25,29 @@ Github上其实已经有很多IP代理池了，但为何还要多造这个轮子
 15. http://feilongip.com/
 16. http://www.dlnyys.com/free/
 
+环境要求：
+```
+Python3.6+
+```
+环境准备：
+```
+pip install requests faker redis
+```
+开始爬取：
+1. 按自个情况修改 ProxyPool.py __init__() 参数
+2. 启动爬虫：python3 ProxyPool.py
+
+使用demo：
+```
+# 结合ProxyPool 中的 get_proxy_ip 方法使用
+import requests
+from ProxyPool import ProxyPool
+
+proxy_ip = ProxyPool().get_proxy_ip()
+
+proxies = {
+    'http': 'http://' + proxy_ip,
+    'https': 'https://' + proxy_ip
+}
+res = requests.get('https://baidu.com/', proxies=proxies, timeout=5)
+```
