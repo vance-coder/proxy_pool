@@ -5,7 +5,7 @@ Github上其实已经有很多IP代理池了，但为何还要多造这个轮子
 1. 爬取的网站资源比较少，需要自己写扩展才能获取更多的资源；
 2. 很多都是通用性代理IP，需要自己二次校验；
 3. 满足自己个性化需求，想怎么扩展就怎么扩展；
-4. 总的来说就是Github上面的都不好用，用着很是不爽，看我来造个差劲更难用的！
+4. 总的来说就是Github上面的都不好用，用着很是不爽，看我来造个更差劲更难用的！
 
 当前爬取的网站主要如下：
 1. 云代理 www.ip3366.net
@@ -22,8 +22,7 @@ Github上其实已经有很多IP代理池了，但为何还要多造这个轮子
 12. http://31f.cn/
 13. http://www.shenjidaili.com/shareip/    http代理(处理方式不一致, 未处理)
 14. http://www.66ip.cn/areaindex_19/1.html   有反爬限制，js动态加载
-15. http://feilongip.com/
-16. http://www.dlnyys.com/free/
+15. http://www.dlnyys.com/free/
 
 环境要求：
 ```
