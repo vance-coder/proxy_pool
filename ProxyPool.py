@@ -29,7 +29,7 @@ class ProxyPool:
 
         self.redis_key = 'proxy_ip'  # proxy ip 存储在redis的key
         self.max_workers = 3  # 爬虫采用的是线程池，此参数设置最大线程数量
-        self.search_depth = 10  # 代理IP资源网站的搜索页数
+        self.search_depth = 5  # 代理IP资源网站的搜索页数
         self.check_url = 'https://www.baidu.com/'  # proxy ip 有效性校验地址
         self.db = StrictRedis.from_url('redis://localhost:6379/0', decode_responses=True)
 
@@ -105,7 +105,7 @@ class ProxyPool:
         :return:
         """
         # 删除所有html标签
-        text = self.pattern_tags.sub('', html)
+        text = self.pattern_tags.sub(' ', html)
         # 将空白符替换成空格
         text = self.pattern_blank.sub(' ', text)
         # 两数字之前的空格替换成冒号
@@ -137,6 +137,7 @@ class ProxyPool:
             'http://www.ip3366.net/free/?stype=1&page={page}',
             'http://ip.kxdaili.com/ipList/{page}.html#ip',
             'http://www.dlnyys.com/free/inha/{page}/',
+            'https://ip.jiangxianli.com/?page={page}',
 
         ]
         for url in origin_urls:
@@ -144,14 +145,23 @@ class ProxyPool:
 
         urls.append('http://31f.cn/')
         urls.append('http://www.kxdaili.com/dailiip.html')
+        urls.append('http://www.nimadaili.com/https/')
+        urls.append('http://www.66ip.cn/')
 
         return urls
 
 
 if __name__ == '__main__':
     # TODO 按自个情况配置 __init__() 参数，再run
-    #  测试代理可用率  https://www.zdaye.com/dayProxy/ip/320427.html
+    # https://www.zdaye.com/dayProxy/ip/320427.html
     # http://www.xsdaili.com/
-    # http://ip.yqie.com/ipproxy.htm
-    # https://ip.jiangxianli.com/
+    # http://www.shenjidaili.com/shareip_detail/13147/
+    # http://www.66ip.cn/ 质量不错
+    # http://www.nimadaili.com/https/  质量不错
+
+    # TODO 通用代理爬虫框架，记忆爬取过的站点的有效率 ip数量，动态爬取代理ip
+    # TODO 记忆数据写入sqlite 或者 redis
+    # TODO 搜索网络 百度等  如何优化效率
     ProxyPool().catch()
+
+
