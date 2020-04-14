@@ -150,4 +150,8 @@ class ProxyPool:
 
 if __name__ == '__main__':
     # TODO 按自个情况配置 __init__() 参数，再run
+    #  测试代理可用率  https://www.zdaye.com/dayProxy/ip/320427.html
+    # http://www.xsdaili.com/
+    # http://ip.yqie.com/ipproxy.htm
+    # https://ip.jiangxianli.com/
     ProxyPool().catch()
